@@ -30,8 +30,7 @@ class UserAdmin
 		$rep->execute();
 
 	}
-
-	public function delUser ($id)
+	public function deleteUser ($id)
 	{
 		$query = 'DELETE FROM users WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
@@ -44,15 +43,31 @@ class UserAdmin
         $rep = $this->_pdo->prepare($query);
 		$rep->execute();
 	}
+
+	public function displayUser ($id, ...$arg)
+	{
+        $query = ("SELECT ".implode($arg,",")." FROM users WHERE id=".$id);
+        $rep = $this->_pdo->prepare($query);
+        $rep->execute();
+		$data = $rep->fetch();
+		return $data;
+	}
 }
 
 /*
 $a = new UserAdmin();
+$b = $a->displayUser(3, "username", "email");
+echo $b["username"]."<br>";
+echo $b["email"];
+*/
+
+/*
 $a->addUser("Leo", "Leo@funnyland.com", "qwerty");
 $a->addUser("Bidon", "Bidon@bidonland.com", "dghdgshjgj");
 $a->addUser("Bidon2", "Bidon@bidonland.com", "dghdgshjgj");
 $a->updateUser("Leon", "Leonfunnyland.com", "azerty",1);
 $a->delUser(2);
 */
+
 
 ?>
