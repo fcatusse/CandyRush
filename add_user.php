@@ -22,11 +22,11 @@ class AddUser
 		return $this->$arg;
 	}
 
-	public function AddToDB ($user)
+	public function AddUserToDB ($user)
 	{
 		$port = CONFIG_PORT;
 
-		$pdo = connect_db("localhost", "root", "root", $port, "registration");
+		$pdo = connect_db("localhost", "root", "root", $port, "pool_php_rush");
 		$query = 'INSERT INTO users (username, password, email, admin) VALUES ( "'.$user->_username.'", "'.$user->_password.'" ,"'.$user->_email.'", "'.$user->_isAdmin.'")';
 		$req->execute();
 	}
