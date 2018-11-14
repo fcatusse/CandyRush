@@ -5,18 +5,25 @@ include_once "config.php";
 
   if($_POST!= NULL)
   {
-    if(strlen($_POST["password"]) > 3 || strlen($_POST["password"]) < 15)
-    {   
-        if(strlen($_POST["name"]) > 2 || strlen($_POST["name"]) < 15)
-        {
-            if($_POST["password"] == $_POST["password_confirmation"])
-            {
-                $user = new UserAdmin();
-                $user->addUser($_POST["name"], $_POST["email"],$_POST["password"], 0);
-            }
-        }
+    $is_valid = TRUE;
+
+    if ($name == NULL || strlen($name) < 3 || strlen($name) > 10) {
+        echo "Invalid name"."<br>";
+        $is_valid = FALSE;
+    }
+    if ($password == NULL || strlen($password) < 3 || strlen($password) > 10) {
+        echo "Invalid password : too short or too long"."<br>";
+        $is_valid = FALSE;
+    }
+    if ($password_confirm == NULL || $password_confirm != $password ) {
+        echo "Password confirmation doesn't match the password"."<br>";
+        $is_valid = FALSE;
     }
 
+    if ($is_valid = TRUE) {
+        $user = new UserAdmin();
+        $user->addUser($_POST["name"], $_POST["email"],$_POST["password"], 0);
+    }
   }
 
 ?>

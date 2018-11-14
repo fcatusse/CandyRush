@@ -7,7 +7,7 @@ session_start();
 $link = "";
 
 if ($_SESSION["is_admin"] == 1) {
-	$pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "registration");
+	$pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
 	$admin = new UserAdmin();
 
 	if (isset($_GET["delete"])) {
@@ -23,9 +23,8 @@ if ($_SESSION["is_admin"] == 1) {
 
 	if (isset($_GET["edit"])) {
 		if ($_GET["admin"] != 1) {
-			$id = $_GET["edit"];
-			$admin->updateUser($id);
-			echo "User Updatedbr>";
+			header("Location: edit_user.php");
+			exit();
 		} else {
 			echo "You can’t edit an administrator.<br>";
 		}
