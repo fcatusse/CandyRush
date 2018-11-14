@@ -28,7 +28,8 @@ include_once "config.php";
     }
   }
   
-if($_SESSION["is_admin"] == 0 || $_COOKIE["is_admin"] == 0)
+if($_SESSION["is_admin"] == 0 || $_COOKIE["is_admin"] == 0) :
+
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +43,10 @@ if($_SESSION["is_admin"] == 0 || $_COOKIE["is_admin"] == 0)
     </form>
     </html>
 
+<?php endif; ?>
 <?php
 
-if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
+if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1) :
 
 ?>
 
@@ -60,4 +62,4 @@ if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 </form>
 </html>
 
-
+<?php endif; ?>
