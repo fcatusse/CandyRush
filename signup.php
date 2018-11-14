@@ -6,23 +6,28 @@ include_once "config.php";
   if($_POST!= NULL)
   {
     $is_valid = TRUE;
+    echo $_POST["name"];
 
-    if ($name == NULL || strlen($name) < 3 || strlen($name) > 10) {
+    if(strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 10)
+    {
         echo "Invalid name"."<br>";
         $is_valid = FALSE;
     }
-    if ($password == NULL || strlen($password) < 3 || strlen($password) > 10) {
+    if(strlen($_POST["password"]) < 3 || strlen($_POST["password"]) > 10) {
+
         echo "Invalid password : too short or too long"."<br>";
         $is_valid = FALSE;
     }
-    if ($password_confirm == NULL || $password_confirm != $password ) {
+    if ($_POST["password"] != $_POST["password_confirmation"] ) {
+
         echo "Password confirmation doesn't match the password"."<br>";
         $is_valid = FALSE;
     }
 
-    if ($is_valid = TRUE) {
+    if ($is_valid == TRUE) {
         $user = new UserAdmin();
         $user->addUser($_POST["name"], $_POST["email"],$_POST["password"], 0);
+        Header("Location: login.php");
     }
   }
 
@@ -31,7 +36,7 @@ include_once "config.php";
 <!DOCTYPE html>
 <html> 
     
-    <form action="inscription.php" method="post">
+    <form action="signup.php" method="post">
         <p> Name : <input type="text" name="name" required;?> </p>
         <p> Email : <input type="email" name="email" required;?> </p>
         <p> Password : <input type="password" name="password" required /></p>
