@@ -7,9 +7,16 @@ class ProductAdmin
 {
 	private $_pdo;
 
-	function __construct()
+	function __construct ()
 	{
-		$this->_pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
+		try
+		{
+			$this->_pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
+		}
+		catch(PDOexception $e)
+		{
+			echo $e->getMessage();
+		}
 	}
 
 	function __get($arg)
@@ -40,6 +47,31 @@ class ProductAdmin
 			$req->execute();
 			echo "Product successfully added<br>";
 		}
+	}
+
+	public function deleteProduct ($id)
+	{
+		$query = 'DELETE FROM products WHERE id='.$id;
+		$rep = $this->_pdo->prepare($query);
+		$rep->execute();
+		echo "Product successfully deleted<br>";
+	}
+
+	public function updateProduct ($name, $price, $id)
+	{
+        $query = ('UPDATE products SET name = "'.$name.'", price="'.$price.'" WHERE id="'.$id.'"');
+        $rep = $this->_pdo->prepare($query);
+		$rep->execute();
+		echo "Product successfully updated<br>";
+	}
+
+	public function displayProduct ($id, ...$arg)
+	{
+        $query = ("SELECT ".implode($arg,",")." FROM products WHERE id=".$id);
+        $rep = $this->_pdo->prepare($query);
+        $rep->execute();
+		$data = $rep->fetch();
+		return $data;
 	}
 }
 
