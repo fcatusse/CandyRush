@@ -8,8 +8,12 @@ session_start();
 if ($_POST != NULL) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
-	$checked = $_POST["remember_me"];
-
+	if (isset($_POST["remember_me"])) {
+		$checked = $_POST["remember_me"];
+	} else {
+		$checked = NULL;
+	}
+	
 	login($email, $password, $checked);
 }
 
