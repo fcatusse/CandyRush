@@ -9,7 +9,7 @@ class ProductAdmin
 
 	function __construct()
 	{
-		$this->_pdo = $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
+		$this->_pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
 	}
 
 	function __get($arg)
