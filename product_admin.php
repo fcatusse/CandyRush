@@ -5,17 +5,11 @@ include_once "connect_db.php";
 
 class ProductAdmin
 {
-	private $_name;
-	private $_price;
-	private $_category;
-	private $_category_id;
+	private $_pdo;
 
-
-	function __construct($name, $price, $category)
+	function __construct()
 	{
-		$this->_name = $name;
-		$this->_price = $price;
-		$this->_category = $category;
+		$this->_pdo = $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
 	}
 
 	function __get($arg)
@@ -24,9 +18,9 @@ class ProductAdmin
 	}
 
 	function getCategory($category) {
-		$pdo = connect_db("localhost", "root", "root", $port, "pool_php_rush");
+
 		$query = 'SELECT id FROM categories WHERE name = "'.$category.'" ';
-		$result = $pdo->query($query);
+		$result = $this->_pdo->query($query);
 		$d = $result->fetch(PDO::FETCH_OBJ);
 		if ($d == NULL) {
 			return NULL;
@@ -35,24 +29,18 @@ class ProductAdmin
 		}
 	}
 
-	public function AddProduct($product)
+	public function AddProduct($name, $price, $category)
 	{
-		$port = CONFIG_PORT;
-		$category = $product->category;
 		$category_id = $this->getCategory($category);
 		if ($category_id == NULL) {
 			echo "This category doesn't exist.<br>";
 		} else {
-			$pdo = connect_db("localhost", "root", "root", $port, "pool_php_rush");
 			$query = 'INSERT INTO products (name, price, category_id) VALUES ( "'.$product->_name.'", "'.$product->_price.'" ,"'.$product->_category_id.'")';
-			$req = $pdo->prepare($query);
+			$req = $this->_pdo->prepare($query);
 			$req->execute();
 			echo "Product successfully added<br>";
 		}
-
-		
 	}
-
 }
 
 
