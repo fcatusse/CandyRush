@@ -1,6 +1,7 @@
 <?php
 include_once "connect_db.php";
 include_once "config.php";
+include_once "user_admin.php";
 session_start();
 
 $link = "";
