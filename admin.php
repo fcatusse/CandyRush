@@ -44,7 +44,7 @@ if ($_SESSION["is_admin"] == 1) {
 
 ?>
 
-<doctype html>
+<!DOCTYPE html>
 <html>
 	<ul>
 		<?php echo $link; ?>
