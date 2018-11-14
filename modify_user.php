@@ -2,10 +2,6 @@
 include_once "config.php";
 include_once "connect_db.php";
 
-
-
-
-
 class modifyUser {
 
     private $_id;
@@ -28,7 +24,7 @@ class modifyUser {
 		return $this->$arg;
 	}
 
-    public function ModifyUserDB ($user)
+    public function ModifyUserDB($user)
 	{
 		$port = CONFIG_PORT;
 

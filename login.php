@@ -28,4 +28,6 @@ if ($_POST != NULL) {
  		<p><input type="checkbox" name="remember_me"><label> Remember me</label></p>
  		<p><input type="submit" value="Submit"></p>
 	</form>
+	<p></p>
+	<p>New user? <a href="signup.php"> Sign up </a></p>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
-const CONFIG_PORT = "8889";
-const CONFIG_USER = "root";
-const CONFIG_PASSWD = "root";
+const CONFIG_PORT = "3306";
+const CONFIG_USER = "damian";
+const CONFIG_PASSWORD = "mot2passe";
 
 
 ?>
