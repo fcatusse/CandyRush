@@ -33,7 +33,7 @@ if($_SESSION["is_admin"] == 0 || $_COOKIE["is_admin"] == 0)
 
 <!DOCTYPE html>
 <html> 
-    <form action="inscription.php" method="post">
+    <form action="signup.php" method="post">
         <p> Name : <input type="text" name="name" required;?> </p>
         <p> Email : <input type="email" name="email" required;?> </p>
         <p> Password : <input type="password" name="password" required /></p>
@@ -50,7 +50,7 @@ if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 
 <!DOCTYPE html>
 <html> 
-    <form action="inscription.php" method="post">
+    <form action="signup.php" method="post">
         <p> Name : <input type="text" name="name" required;?> </p>
         <p> Email : <input type="email" name="email" required;?> </p>
         <p> Password : <input type="password" name="password" required /></p>
