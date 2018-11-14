@@ -20,7 +20,7 @@ if ($_POST != NULL) {
 
 ?>
 
-<doctype html>
+<!DOCTYPE html>
 <html>
 	<form method="post">
  		<p>Email: <input type="text" name="email" placeholder="Email"/></p>
