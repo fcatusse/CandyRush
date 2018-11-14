@@ -15,13 +15,8 @@ else
 
 if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 
-
 ?>
 <!DOCTYPE html>
 <html>
 <a href="admin.php"> Admin dashboard </a>
 </html>
-
-<?php
-
-?>
