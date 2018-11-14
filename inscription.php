@@ -1,6 +1,7 @@
 <?php
 
-
+include_once "user_admin.php";
+include_once "config.php";
 
   if($_POST!= NULL)
   {
@@ -23,9 +24,9 @@
 <!DOCTYPE html>
 <html> 
     
-    <form action="modify_account.php" method="post">
-        <p> Name : <input type="text" name="name" required;?>" /></p>
-        <p> Email : <input type="email" name="email" required;?>"/></p>
+    <form action="inscription.php" method="post">
+        <p> Name : <input type="text" name="name" required;?> </p>
+        <p> Email : <input type="email" name="email" required;?> </p>
         <p> Password : <input type="password" name="password" required /></p>
         <p> Password confirmation : <input type="password" name="password_confirmation" required /></p>
         <p><input type="submit" value="OK"></p>
