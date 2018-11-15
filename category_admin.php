@@ -41,3 +41,27 @@ class CategoryAdmin
 		return $data;
 	}
 }
+
+/*$a = new CategoryAdmin();
+$a->addCategory("Tagada");
+$a->addCategory("Gelifies");
+$a->addCategory("Chamallows");
+$a->addCategory("Reglisse");
+$a->addCategory("Originale",1);
+$a->addCategory("Pink",1);
+$a->addCategory("Schtroumpfs",2);
+$a->addCategory("Croco",2);
+$a->addCategory("Ours",2);
+$a->addCategory("Oasis",2);
+$a->addCategory("Oeufs",2);
+$a->addCategory("Chamalows",3);
+$a->addCategory("Chamalows Choco",3);
+$a->addCategory("Chamalows Schtroumpfs",3);
+$a->addCategory("Rainbollows",3);
+$a->addCategory("Rotella",4);
+$a->addCategory("Cocobat",4);
+$a->addCategory("Car en Sac",4);
+$a->addCategory("Painzan",4);
+$a->addCategory("Painzan",4);*/
+
+?>

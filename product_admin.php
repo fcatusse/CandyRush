@@ -1,5 +1,4 @@
 <?php
-
 include_once "config.php";
 include_once "connect_db.php";
 
@@ -36,20 +35,20 @@ class ProductAdmin
 		}
 	}
 
-	public function AddProduct($name, $price, $category)
+	public function addProduct($name, $price, $category)
 	{
 		$category_id = $this->getCategory($category);
 		if ($category_id == NULL) {
 			echo "This category doesn't exist.<br>";
 		} else {
-			$query = 'INSERT INTO products (name, price, category_id) VALUES ( "'.$product->_name.'", "'.$product->_price.'" ,"'.$product->_category_id.'")';
+			$query = 'INSERT INTO products (name, price, category_id) VALUES ( "'.$name.'", "'.$price.'" ,"'.$category_id.'")';
 			$req = $this->_pdo->prepare($query);
 			$req->execute();
 			echo "Product successfully added<br>";
 		}
 	}
 
-	public function deleteProduct ($id)
+	public function deleteProduct($id)
 	{
 		$query = 'DELETE FROM products WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
@@ -57,15 +56,16 @@ class ProductAdmin
 		echo "Product successfully deleted<br>";
 	}
 
-	public function updateProduct ($name, $price, $id)
+	public function updateProduct($name, $price, $category, $id)
 	{
-        $query = ('UPDATE products SET name = "'.$name.'", price="'.$price.'" WHERE id="'.$id.'"');
+        $category_id = $this->getCategory($category);
+        $query = ('UPDATE products SET name = "'.$name.'", price="'.$price.'", category_id = "'.$category_id.'" WHERE id="'.$id.'"');
         $rep = $this->_pdo->prepare($query);
 		$rep->execute();
 		echo "Product successfully updated<br>";
 	}
 
-	public function displayProduct ($id, ...$arg)
+	public function displayProduct($id, ...$arg)
 	{
         $query = ("SELECT ".implode($arg,",")." FROM products WHERE id=".$id);
         $rep = $this->_pdo->prepare($query);
@@ -75,5 +75,7 @@ class ProductAdmin
 	}
 }
 
+//$prod = new ProductAdmin();
+//$prod->updateProduct("Fraise piquante", 2, "Tagada", 1);
 
 ?>

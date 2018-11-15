@@ -57,20 +57,20 @@ class UserAdmin
 	}
 }
 
-/*
-$a = new UserAdmin();
+
+/*$a = new UserAdmin();
 $b = $a->displayUser(3, "username", "email");
 echo $b["username"]."<br>";
 echo $b["email"];
-*/
 
-/*
+
+
 $a->addUser("Leo", "Leo@funnyland.com", "qwerty");
 $a->addUser("Bidon", "Bidon@bidonland.com", "dghdgshjgj");
 $a->addUser("Bidon2", "Bidon@bidonland.com", "dghdgshjgj");
 $a->updateUser("Leon", "Leonfunnyland.com", "azerty",1);
-$a->delUser(2);
-*/
+$a->delUser(2);*/
+
 
 
 ?>

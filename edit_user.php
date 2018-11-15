@@ -41,11 +41,13 @@ if ($_POST!=NULL)
         $user->updateUser($_POST["name"], $_POST["email"], $_POST["password"], $_SESSION["id"]);
     }
     
-    if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
+}
+
+if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
     {
         $var = '<p> Admin <input type="checkbox" name="checkbox" > </p>';
     }
-}
+
 ?>
 
 <!DOCTYPE html>

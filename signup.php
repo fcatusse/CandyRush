@@ -1,12 +1,11 @@
 <?php
-
 include_once "user_admin.php";
 include_once "config.php";
+session_start();
 
   if($_POST!= NULL)
   {
     $is_valid = TRUE;
-    echo $_POST["name"];
 
     if(strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 10)
     {
