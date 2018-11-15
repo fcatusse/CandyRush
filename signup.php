@@ -2,10 +2,18 @@
 include_once "user_admin.php";
 include_once "config.php";
 session_start();
-
+$pdo = NULL;
   if($_POST!= NULL)
   {
     $is_valid = TRUE;
+    $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email =?");
+    $stmt->execute([$_POST["email"]]);
+    $user = $stmt->fetch();
+    if ($user) {
+       echo "Email already used <br>";
+       throw New Exception('Email is already taken');
+    } 
 
     if(strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 10)
     {
