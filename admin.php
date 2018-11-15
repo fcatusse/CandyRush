@@ -47,8 +47,8 @@ if ($_SESSION["is_admin"] == 1) {
 	$query = 'SELECT * FROM users';
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
-	 	$link .= '<li> '.$d->email.' <a href="admin.php?delete='.$d->id.'&admin='.$d->is_admin.'"> Delete </a> 
-	 					<a href="admin.php?edit='.$d->id.'&admin='.$d->is_admin.'"> Edit </a></li>';
+	 	$link .= '<li> '.$d->email.' <a href="admin.php?delete='.$d->id.'&admin='.$d->admin.'"> Delete </a> 
+	 					<a href="admin.php?edit='.$d->id.'&admin='.$d->admin.'"> Edit </a></li>';
 	}
 
 	$query = 'SELECT * FROM products';
