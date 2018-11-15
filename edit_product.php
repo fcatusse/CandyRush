@@ -5,8 +5,6 @@ include_once "config.php";
 include_once "user_admin.php";
 include_once "product_admin.php";
 
-echo $_SESSION["product_id"];
-echo "hello";
 if($_POST!= NULL)
 {
     $is_valid = TRUE;
@@ -26,7 +24,6 @@ if($_POST!= NULL)
     if ($is_valid == TRUE) {
         $user = new ProductAdmin();
         $user->updateProduct($_POST["name"], $_POST["price"], $_POST["candy"], $_SESSION["product_id"]);
-        echo $_POST["name"] . $_POST["price"] . $_POST["candy"] . "Product ID: ". $_SESSION["product_id"];
     }
 }
 $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_php_rush");
