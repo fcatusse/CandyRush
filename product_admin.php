@@ -35,6 +35,18 @@ class ProductAdmin
 		}
 	}
 
+	function getCategoryReverse($category) {
+
+		$query = 'SELECT name FROM categories WHERE id = "'.$category.'" ';
+		$result = $this->_pdo->query($query);
+		$d = $result->fetch(PDO::FETCH_OBJ);
+		if ($d == NULL) {
+			return NULL;
+		} else {
+			return $d->name;
+		}
+	}
+
 	public function addProduct($name, $price, $category)
 	{
 		$category_id = $this->getCategory($category);
