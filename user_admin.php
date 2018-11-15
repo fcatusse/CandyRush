@@ -41,7 +41,12 @@ class UserAdmin
 
 	public function updateUser ($username, $email, $password, $id)
 	{
-        $query = ('UPDATE users SET username = "'.$username.'" , email = "'.$email.'", password="'.password_hash($password,PASSWORD_DEFAULT).'" WHERE id="'.$id.'"');
+        if ($password == NULL) {
+        	echo "null<br>";
+        	 $query = ('UPDATE users SET username = "'.$username.'" , email = "'.$email.'" WHERE id="'.$id.'"');
+        } else {
+        	$query = ('UPDATE users SET username = "'.$username.'" , email = "'.$email.'", password="'.password_hash($password,PASSWORD_DEFAULT).'" WHERE id="'.$id.'"');
+        }
         $rep = $this->_pdo->prepare($query);
 		$rep->execute();
 		echo "User successfully updated<br>";
@@ -58,18 +63,11 @@ class UserAdmin
 }
 
 
-/*$a = new UserAdmin();
-$b = $a->displayUser(3, "username", "email");
-echo $b["username"]."<br>";
-echo $b["email"];
+//$a = new UserAdmin();
 
+//$a->addUser("flora", "flora@veto.com", "flora");
+//$a->updateUser("Flora", "flora@veto.com","",1);
 
-
-$a->addUser("Leo", "Leo@funnyland.com", "qwerty");
-$a->addUser("Bidon", "Bidon@bidonland.com", "dghdgshjgj");
-$a->addUser("Bidon2", "Bidon@bidonland.com", "dghdgshjgj");
-$a->updateUser("Leon", "Leonfunnyland.com", "azerty",1);
-$a->delUser(2);*/
 
 
 
