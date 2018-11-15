@@ -16,11 +16,14 @@ else
 }
 
 if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1) {
-	$link = '<a href="admin.php"> Admin dashboard </a>';
+	$link = '<a href="admin.php"> Admin dashboard </a><br>';
 }
 
 ?>
 <!DOCTYPE html>
 <html>
 	<?php echo $link; ?>
+	<p><a href="edit_self.php"> Settings </a></p>
+	<p><a href="logout.php"> Logout </a></p>
 </html>
+
