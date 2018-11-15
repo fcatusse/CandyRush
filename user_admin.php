@@ -42,7 +42,6 @@ class UserAdmin
 	public function updateUser ($username, $email, $password, $id)
 	{
         if ($password == NULL) {
-        	echo "null<br>";
         	 $query = ('UPDATE users SET username = "'.$username.'" , email = "'.$email.'" WHERE id="'.$id.'"');
         } else {
         	$query = ('UPDATE users SET username = "'.$username.'" , email = "'.$email.'", password="'.password_hash($password,PASSWORD_DEFAULT).'" WHERE id="'.$id.'"');
@@ -67,8 +66,6 @@ class UserAdmin
 
 //$a->addUser("flora", "flora@veto.com", "flora");
 //$a->updateUser("Flora", "flora@veto.com","",1);
-
-
 
 
 ?>
