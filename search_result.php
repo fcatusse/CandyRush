@@ -5,6 +5,8 @@ include_once "connect_db.php";
 include_once "search.php";
 include_once "category_admin.php";
 
+session_start();
+
 // Do search
 if (!empty($_POST)) {
 
@@ -17,6 +19,13 @@ if (!empty($_POST)) {
 	$arr = $a->do_search($q_search ,$q_category ,$q_price[0] ,$q_price[1], $q_order);
 
 // Display search
+
+	if (isset($_GET["showprod"])) {
+		$id = $_GET["showprod"];
+		$_SESSION["product_id"] = $id;
+		header("Location: show_product.php");
+		exit();
+	} 
 
 ?>
 
@@ -56,9 +65,18 @@ if (!empty($_POST)) {
 	echo "<h3>$msg</h3>";
 
 	echo "<ul>";
+
+
+
 	foreach ($arr as $value)
 	{
-		echo "<li>{$value["name"]} - {$value["price"]} €</li>";
+		$link  = '<a href=show_product.php?product_id=';
+		$link .= $value['id'];
+		$link .= '>';
+		$link .= $value['name'];
+		$link .= '</a><br>';
+		echo $link;
+
 	}
 	echo "</ul>";
 }

@@ -70,7 +70,7 @@ if ($_SESSION["is_admin"] == 1) {
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
 	 	$link .= '<li> '.$d->name.' <a href="admin.php?deleteprod='.$d->id.'"> Delete </a>  <a href="admin.php?editprod='.$d->id.'"> Edit </a>
-	 	<a href="admin.php?showprod='.$d->id.'"> Show </a> </li>';
+	 	<a href="show_product.php?product_id='.$d->id.'"> Show </a> </li>';
 	}
 
 	 
