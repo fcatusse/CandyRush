@@ -80,6 +80,7 @@ class CategoryAdmin
 		return NULL;
 	}
 	$array_result = array_merge($array_result, $res);
+	array_push($array_result, strval($parent_id));
 
 	while ($end == FALSE) {
 		$query = 'SELECT id 
