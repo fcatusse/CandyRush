@@ -24,6 +24,7 @@ class CategoryAdmin
 		$query = "INSERT INTO categories (name, parent_id) VALUES ('".$name."', ".$parent_id.")";
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
+		return "Category successfully created";
 
 	}
 
@@ -32,6 +33,7 @@ class CategoryAdmin
 		$query = 'DELETE FROM categories WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
+		return "Category successfully deleted";
 	}
 
 	public function displayCategory ($id, ...$arg)
