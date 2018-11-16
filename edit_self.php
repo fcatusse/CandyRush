@@ -1,8 +1,6 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-session_start();
-
 
 if ($_POST!=NULL)
 {
@@ -72,8 +70,7 @@ $user_email = $array2["email"];
 
 ?>
 
-<!DOCTYPE html>
-<html>    
+<?php include_once "header.php" ?>  
     <form action="edit_self.php" method="post">
         <p> Name : <input type="text" name="name" value="<?php echo $user_username ;?>" /></p>
         <p> Email : <input type="text" name="email" value="<?php echo $user_email ;?>"/></p>
@@ -83,5 +80,4 @@ $user_email = $array2["email"];
         <p><input type="submit" value="OK" onclick="return confirm('Send the form?')"></p>
     </form>
     <p></p>
-    <p><a href="logout.php"> Logout </a></p>
-</html>
+<?php include_once "footer.php" ?>

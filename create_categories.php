@@ -3,7 +3,6 @@ include_once "connect_db.php";
 include_once "login_function.php";
 include_once "config.php";
 include_once "category_admin.php";
-session_start();
 
 if($_POST["category_name"]!= NULL)
 {
@@ -36,9 +35,7 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ?>
     <form action="create_categories.php" method="post">
         <p> Category name : <input type="text" name="category_name" required> </p>
         <p> Candy category: <select name="parent_id">
@@ -47,4 +44,4 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         </select><p>
         <p><input type="submit" value="OK"></p>
     </form>
-</html>
+<?php include_once "footer.php" ?>

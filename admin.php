@@ -3,7 +3,6 @@ include_once "connect_db.php";
 include_once "config.php";
 include_once "user_admin.php";
 include_once "product_admin.php";
-session_start();
 
 $link = "";
 
@@ -80,13 +79,11 @@ if ($_SESSION["is_admin"] == 1) {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ?>
 	<ul>
 		<?php echo $link; ?>
 		<a href="signup.php"> Add user </a>
 		<a href="signup_product.php"> Add product </a>
 		<a href="create_categories.php"> Create Category </a>
 	</ul>
-</html>
+<?php include_once "footer.php" ?>

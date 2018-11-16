@@ -1,8 +1,6 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-session_start();
-
 
 if ($_POST!=NULL)
 {
@@ -50,10 +48,6 @@ if ($_POST!=NULL)
     {
         $status = false;
         echo "To save changes, current password must be valid <br>";
-    } else {
-        //echo "nice <br>";
-        //header('Refresh:3; url=index.php');
-        //echo 'User successfully edited';
     }
 
     if($status == true)                   
@@ -95,5 +89,4 @@ if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
         <p><input type="submit" value="OK" onclick="return confirm('Send the form?')"></p>
     </form>
     <p></p>
-    <p><a href="logout.php"> Logout </a></p>
 </html>

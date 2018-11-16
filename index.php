@@ -2,7 +2,6 @@
 include_once "connect_db.php";
 include_once "login_function.php";
 include_once "config.php";
-session_start();
 
 $link = "cool";
 $cat_list = NULL;
@@ -34,15 +33,11 @@ $query = 'SELECT * FROM categories WHERE parent_id=0';
 	 	$cat_list .= '<p><li> '.$d->name.' <a href="index.php?viewprod='.$d->id.'"> View </a></li></p>';
 	}
 
-
-
 ?>
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ?>
 	<?php
 	echo $link;  
 	echo $cat_list; 
 	?>
 	<p><a href="edit_self.php"> Settings </a></p>
-	<p><a href="logout.php"> Logout </a></p>
-</html>
+<?php include_once "footer.php" ?>
