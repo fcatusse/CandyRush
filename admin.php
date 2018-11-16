@@ -80,10 +80,12 @@ if ($_SESSION["is_admin"] == 1) {
 
 ?>
 <?php include_once "header.php" ?>
+	<div class="container">
 	<ul>
 		<?php echo $link; ?>
 		<a href="signup.php"> Add user </a>
 		<a href="signup_product.php"> Add product </a>
 		<a href="create_categories.php"> Create Category </a>
 	</ul>
+	</div>
 <?php include_once "footer.php" ?>
