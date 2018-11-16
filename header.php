@@ -16,7 +16,7 @@
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo center"><img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
-                            <li><a href="index.php">Accueil</a></li>
+                            <li><a href="index.php">Home</a></li>
                             <li><a href="logout.php">Logout</a></li>
                     </ul>
                     </div>
