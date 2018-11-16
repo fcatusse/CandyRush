@@ -87,5 +87,6 @@ if ($_SESSION["is_admin"] == 1) {
 		<?php echo $link; ?>
 		<a href="signup.php"> Add user </a>
 		<a href="signup_product.php"> Add product </a>
+		<a href="create_categories.php"> Create Category </a>
 	</ul>
 </html>
