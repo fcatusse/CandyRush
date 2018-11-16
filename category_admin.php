@@ -42,6 +42,15 @@ class CategoryAdmin
 		$data = $rep->fetch();
 		return $data;
 	}
+	
+	public function displayAllCategory()
+	{
+        $query = ("SELECT * FROM categories");
+        $rep = $this->_pdo->prepare($query);
+        $rep->execute();
+		$arr = $rep->fetchall(PDO::FETCH_ASSOC);
+		return $arr;
+	}
 
 	function getChildrenCategories($parent_id) {
 
