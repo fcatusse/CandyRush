@@ -2,7 +2,7 @@
 include_once "connect_db.php";
 include_once "config.php";
 include_once "product_admin.php";
-session_start();
+
 
 	$product = new ProductAdmin();
 	$array = $product->displayProduct($_GET["product_id"], "name", "price", "category_id");
