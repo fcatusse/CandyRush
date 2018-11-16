@@ -25,7 +25,7 @@
         <!-- NAV TERMINE ICI --->
     </head>
     <aside>
-    	<?php include_once "search_form.php"; ?>
+        <?php if($_SESSION["is_admin"] !=1 || $_COOKIE["is_admin"] != 1){include_once "search_form.php";} ?>
     </aside>  
     <body>
     <main>
