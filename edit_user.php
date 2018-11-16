@@ -2,6 +2,10 @@
 include_once "user_admin.php";
 include_once "config.php";
 
+$_SESSION["search"] = FALSE;
+
+$alert = "";
+
 if ($_POST!=NULL)
 {
     if($_SESSION["email"])
@@ -53,9 +57,9 @@ if ($_POST!=NULL)
     if($status == true)                   
     {
         if ($pass_null == true) {
-            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["user_id"], $_POST["checkbox"]);
+            $alert = $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["user_id"], $_POST["checkbox"]);
         } else {
-            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["user_id"], $_POST["checkbox"]);
+            $alert = $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["user_id"], $_POST["checkbox"]);
         }
         
     }
@@ -69,7 +73,8 @@ $user_email = $array2["email"];
 
 if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 {
-    $var = '<p> Admin <input type="checkbox" name="checkbox" > </p>';
+    //$var = '<p> Admin <input type="checkbox" name="checkbox" > </p>';
+    $var = '<label> <input type="checkbox" /> <span>Make admin </span> </label>';
 } else
 {
     $var = "";
@@ -77,16 +82,24 @@ if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 
 ?>
 
-<!DOCTYPE html>
-<html>    
+<?php include_once "header.php" ; ?>
+
+<div class = "container"> 
+     <h5>Edit a user</h5>
+     <p> <?php echo $alert;?></p>
     <form action="edit_user.php" method="post">
         <p> Name : <input type="text" name="name" value="<?php echo $user_username ;?>" /></p>
         <p> Email : <input type="text" name="email" value="<?php echo $user_email ;?>"/></p>
         <p> New Password : <input type="password" name="new_password" /></p>
         <p> Type new password again : <input type="password" name="password_confirmation" /></p>
         <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>
-        <?php echo $var ; ?>       
-        <p><input type="submit" value="OK" onclick="return confirm('Send the form?')"></p>
+        <?php echo $var ; ?>  
+
+        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
     </form>
     <p></p>
-</html>
+
+</div>
+
+<?php include_once "footer.php" ; ?>
+
