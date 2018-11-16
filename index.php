@@ -8,7 +8,7 @@ $cat_list = NULL;
 
 if($_SESSION["name"])
 {
-    echo "Hello " .$_SESSION["name"]. "<br>";
+    $hello = "Hello " .$_SESSION["name"];
 }
 else
 {
@@ -30,14 +30,28 @@ $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_
 $query = 'SELECT * FROM categories WHERE parent_id=0';
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
-	 	$cat_list .= '<p><li> '.$d->name.' <a href="index.php?viewprod='.$d->id.'"> View </a></li></p>';
-	}
+	 	//$cat_list .= '<p><li> '.$d->name.' <a href="index.php?viewprod='.$d->id.'"> View </a></li></p>';
+	 	$cat_list .= '
+    		<div class="col s12 m4">
+      			<div class="card">
+       				<div class="card-image">
+          				<img src="sampleimg.jpg">
+          				<span class="card-title">'.$d->name.'</span>
+        			</div>
 
+        			<div class="card-action">
+          				<a href="index.php?viewprod='.$d->id.'"> View </a>
+        			</div>
+      			</div>
+    		</div>';
+	}
 ?>
+
 <?php include_once "header.php" ?>
-	<?php
-	echo $link;  
-	echo $cat_list; 
-	?>
-	<p><a href="edit_self.php"> Settings </a></p>
+	<div class="container">
+		<h1><?php echo $hello; ?>!</h1>
+		<h4><?php echo $link; ?></h4>
+		<div class="cards row"> <?php echo $cat_list; ?> </div>
+		<h5><p><a href="edit_self.php"> Edit profile </a></p></h5>
+	</div>
 <?php include_once "footer.php" ?>
