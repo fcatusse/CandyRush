@@ -35,7 +35,7 @@ if ($_SESSION["is_admin"] == 1) {
 
 	if (isset($_GET["showuser"])) {
 		$id = $_GET["showuser"];
-		$_SESSION["product_id"] = $id;
+		$_SESSION["user_id"] = $id;
 		header("Location: show_user.php");
 		exit();
 	} 
