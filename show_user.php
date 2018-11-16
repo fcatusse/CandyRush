@@ -25,9 +25,8 @@ if ($_SESSION["is_admin"] == 1 ) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ; ?>
 	<?php echo $username ;?><br>
 	<?php echo $email ;?> <br>
 	<?php echo $is_admin ;?><br>
-</html>
+<?php include_once "footer.php" ; ?>
