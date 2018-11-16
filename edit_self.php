@@ -2,6 +2,10 @@
 include_once "user_admin.php";
 include_once "config.php";
 
+$alert = "";
+
+$_SESSION["search"] = FALSE;
+
 if ($_POST!=NULL)
 {
     if($_SESSION["email"])
@@ -53,9 +57,9 @@ if ($_POST!=NULL)
     if($status == true)                   
     {
         if ($pass_null == true) {
-            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["id"]);
+            $alert = $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["id"]);
         } else {
-            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["id"]);
+            $alert = $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["id"]);
         }
         
     }
@@ -71,13 +75,16 @@ $user_email = $array2["email"];
 ?>
 
 <?php include_once "header.php" ?>  
+<div class= "container">
+    <h5>Edit your information</h5>
+    <p> <?php echo $alert;?></p>
     <form action="edit_self.php" method="post">
         <p> Name : <input type="text" name="name" value="<?php echo $user_username ;?>" /></p>
         <p> Email : <input type="text" name="email" value="<?php echo $user_email ;?>"/></p>
         <p> New Password : <input type="password" name="new_password" /></p>
         <p> Type new password again : <input type="password" name="password_confirmation" /></p>
         <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>     
-        <p><input type="submit" value="OK" onclick="return confirm('Send the form?')"></p>
+        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
     </form>
-    <p></p>
+</div>
 <?php include_once "footer.php" ?>
