@@ -24,5 +24,8 @@
         </header>
         <!-- NAV TERMINE ICI --->
     </head>
+    <aside>
+    	<?php include_once "search_form.php"; ?>
+    </aside>  
     <body>
     <main>
