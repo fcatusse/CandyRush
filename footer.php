@@ -1,6 +1,8 @@
+<script>
+	$(document).ready(function(){
+    	$('select').formSelect();
+  	});
+</script>
+
 </body>
-<!--- FOOTER COMMENCE ICI --->
-
-<!--- FOOTER TERMINE ICI --->
-
 </html>
