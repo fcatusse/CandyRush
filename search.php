@@ -3,7 +3,6 @@
 include_once "config.php";
 include_once "connect_db.php";
 
-
 class Search
 {
 	private $_pdo;
@@ -19,28 +18,28 @@ class Search
 		if (!$category_id && ($price_min == -1 || $price_max == -1))
 		{
 			// echo "Search $name (ANY category_id: $category_id / ANY prices)\n";
-			$query = ("SELECT name, price FROM products WHERE name LIKE '%".$name."%' ORDER by ".$order."");
+			$query = ("SELECT id, name, price FROM products WHERE name LIKE '%".$name."%' ORDER by ".$order."");
 		}
 		
 		// Search name (WITH category / ANY prices)
 		else if ($category_id && ($price_min == -1 || $price_max == -1))
 		{
 			// echo "Search $name (WITH category_id: $category_id / ANY prices)\n";
-			$query = ("SELECT name, price FROM products WHERE name LIKE '%".$name."%' AND category_id = ".$category_id." ORDER by ".$order."");
+			$query = ("SELECT id, name, price FROM products WHERE name LIKE '%".$name."%' AND category_id = ".$category_id." ORDER by ".$order."");
 		}
 
 		// Search name (ANY category / WITH prices)
 		else if (!$category_id && ($price_min != -1 && $price_max != -1))
 		{
 			// echo "Search $name (ANY category_id / WITH prices: $price_min - $price_max)\n";
-			$query = ("SELECT name, price FROM products WHERE name LIKE '%".$name."%' AND price BETWEEN ".$price_min." AND ".$price_max." ORDER by ".$order."");
+			$query = ("SELECT id, name, price FROM products WHERE name LIKE '%".$name."%' AND price BETWEEN ".$price_min." AND ".$price_max." ORDER by ".$order."");
 		}
 
 		// Search name (WITH category / WITH prices)
 		else if ($category_id && ($price_min != -1 && $price_max != -1))
 		{
 			/// echo "Search $name (WITH category_id: $category_id / WITH prices: $price_min - $price_max)\n";
-			$query = ("SELECT name, price FROM products WHERE name LIKE '%".$name."%' AND category_id = ".$category_id." AND price BETWEEN ".$price_min." AND ".$price_max." ORDER by ".$order."");
+			$query = ("SELECT id, name, price FROM products WHERE name LIKE '%".$name."%' AND category_id = ".$category_id." AND price BETWEEN ".$price_min." AND ".$price_max." ORDER by ".$order."");
 		}
 
         $rep = $this->_pdo->prepare($query);
