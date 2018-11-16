@@ -12,7 +12,7 @@
     <body>
         <header>
         <!-- NAV COMMENCE ICI --->
-            <nav>
+            <nav class="pink lighten-2">
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo center"><img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
@@ -25,7 +25,7 @@
         <!-- NAV TERMINE ICI --->
     </head>
     <aside>
-        <?php if($_SESSION["is_admin"] !=1 || $_COOKIE["is_admin"] != 1){include_once "search_form.php";} ?>
+        <?php /*if($_SESSION["is_admin"] !=1 || $_COOKIE["is_admin"] != 1)*/{include_once "search_form.php";} ?>
     </aside>  
     <body>
     <main>
