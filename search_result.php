@@ -29,7 +29,7 @@ if (!empty($_POST)) {
 ?>
 
 <div class="container">
-
+	
 	<?php
 		$msg  = "Results";
 		$msg .= ($q_search != null) ? " for « {$q_search} » " : " for any word";
