@@ -50,18 +50,14 @@ if ($_POST!=NULL)
     {
         $status = false;
         echo "To save changes, current password must be valid <br>";
-    } else {
-        echo "nice <br>";
-        header("Location: index.php");
-        exit;
-    }
+    } 
 
     if($status == true)                   
     {
         if ($pass_null == true) {
-            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["user_id"], $_POST["checkbox"]);
+            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["id"]);
         } else {
-            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["user_id"], $_POST["checkbox"]);
+            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["id"]);
         }
         
     }
@@ -69,29 +65,21 @@ if ($_POST!=NULL)
 }
 
 $user2 = new UserAdmin();
-$array2 = $user2->displayUser($_SESSION["user_id"],"username", "email");
+$array2 = $user2->displayUser($_SESSION["id"],"username", "email");
 $user_username = $array2["username"];
 $user_email = $array2["email"];
 
-if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
-{
-    $var = '<p> Admin <input type="checkbox" name="checkbox" > </p>';
-} else
-{
-    $var = "";
-}
 
 ?>
 
 <!DOCTYPE html>
 <html>    
-    <form action="edit_user.php" method="post">
+    <form action="edit_self.php" method="post">
         <p> Name : <input type="text" name="name" value="<?php echo $user_username ;?>" /></p>
         <p> Email : <input type="text" name="email" value="<?php echo $user_email ;?>"/></p>
         <p> New Password : <input type="password" name="new_password" /></p>
         <p> Type new password again : <input type="password" name="password_confirmation" /></p>
-        <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>
-        <?php echo $var ; ?>       
+        <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>     
         <p><input type="submit" value="OK" onclick="return confirm('Send the form?')"></p>
     </form>
     <p></p>

@@ -44,6 +44,13 @@ if ($_SESSION["is_admin"] == 1) {
 		exit();
 	} 
 
+	if (isset($_GET["showprod"])) {
+		$id = $_GET["showprod"];
+		$_SESSION["product_id"] = $id;
+		header("Location: show_product.php");
+		exit();
+	} 
+
 	$query = 'SELECT * FROM users';
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
@@ -54,7 +61,8 @@ if ($_SESSION["is_admin"] == 1) {
 	$query = 'SELECT * FROM products';
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
-	 	$link .= '<li> '.$d->name.' <a href="admin.php?deleteprod='.$d->id.'"> Delete </a>  <a href="admin.php?editprod='.$d->id.'"> Edit </a></li>';
+	 	$link .= '<li> '.$d->name.' <a href="admin.php?deleteprod='.$d->id.'"> Delete </a>  <a href="admin.php?editprod='.$d->id.'"> Edit </a>
+	 	<a href="admin.php?showprod='.$d->id.'"> Show </a> </li>';
 	}
 
 	 

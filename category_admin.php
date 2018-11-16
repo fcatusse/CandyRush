@@ -32,13 +32,21 @@ class CategoryAdmin
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
 	}
-	public function displayCategory ($id, ...$arg)
+	public function displayCategory ($id, ...$arg )
 	{
         $query = ("SELECT ".implode($arg,",")." FROM categories WHERE id=".$id);
         $rep = $this->_pdo->prepare($query);
         $rep->execute();
-		$data = $rep->fetch();
-		return $data;
+		$arr = $rep->fetch();
+		return $arr;
+	}
+	public function displayAllCategory()
+	{
+        $query = ("SELECT * FROM categories");
+        $rep = $this->_pdo->prepare($query);
+        $rep->execute();
+		$arr = $rep->fetchall(PDO::FETCH_ASSOC);
+		return $arr;
 	}
 }
 
