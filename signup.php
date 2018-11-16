@@ -61,6 +61,5 @@ $pdo = NULL;
          <?php echo $var ; ?>   
         <p><input type="submit" value="OK"></p>
     </form>
-     <?php echo $logout ;?>
      <p> <a href="login.php"> Already registered? Sign in</p>
     </html>
