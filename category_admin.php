@@ -26,28 +26,59 @@ class CategoryAdmin
 		$rep->execute();
 
 	}
+
 	public function deleteCategory ($id)
 	{
 		$query = 'DELETE FROM categories WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
 	}
-	public function displayCategory ($id, ...$arg )
+
+	public function displayCategory ($id, ...$arg)
 	{
         $query = ("SELECT ".implode($arg,",")." FROM categories WHERE id=".$id);
         $rep = $this->_pdo->prepare($query);
         $rep->execute();
-		$arr = $rep->fetch();
-		return $arr;
+		$data = $rep->fetch();
+		return $data;
 	}
-	public function displayAllCategory()
-	{
-        $query = ("SELECT * FROM categories");
-        $rep = $this->_pdo->prepare($query);
-        $rep->execute();
-		$arr = $rep->fetchall(PDO::FETCH_ASSOC);
-		return $arr;
+
+	function getChildrenCategories($parent_id) {
+
+	$array_result = array();
+	$res = array();
+//var_dump($res);
+	$query = "SELECT id FROM categories WHERE parent_id = ".$parent_id;
+	$result = $this->_pdo->query($query);
+	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
+		echo $d->id;
+		array_push($res, $d->id);
 	}
+//var_dump ($res);
+	if (count($res) == 0) {
+		return NULL;
+	}
+	$array_result = array_merge($array_result, $res);
+
+	while ($end == FALSE) {
+		$query = 'SELECT id 
+		FROM categories 
+		WHERE parent_id IN (' . implode(',', array_map('intval', $res)) . ')';
+		$result = $this->_pdo->query($query);
+		$res = array();
+		while ($d = $result->fetch(PDO::FETCH_OBJ)) {
+			array_push($res, $d->id);
+		}
+		if (count($res) != 0) {
+			$array_result = array_merge($array_result, $res);
+		} else {
+			$end = TRUE;
+		}
+	}
+
+	return $array_result;
+	}
+
 }
 
 /*$a = new CategoryAdmin();
