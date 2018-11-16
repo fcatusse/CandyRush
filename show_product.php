@@ -13,9 +13,8 @@ include_once "product_admin.php";
 	$category = $product->getCategoryReverse($category_id);
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ; ?>
 	<?php echo $name ;?><br>
 	<?php echo $price ;?> euros <br>
 	<?php echo $category ;?><br>
-</html>
+<?php include_once "footer.php" ; ?>
