@@ -4,7 +4,6 @@ include_once "login_function.php";
 include_once "config.php";
 include_once "product_admin.php";
 include_once "category_admin.php";
-session_start();
 
 $cat_list = ""; 
 $prod_list = ""; 
@@ -45,8 +44,7 @@ if ($prod_list == "") {
 
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ; ?>
 	<p> Categories : </p>
 	<ul>
 		<?php echo $cat_list; ?> 
@@ -56,5 +54,5 @@ if ($prod_list == "") {
     	<?php echo $prod_list ;?>	
     </UL>
     
-</html>
+<?php include_once "footer.php" ; ?>
 

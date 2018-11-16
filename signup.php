@@ -1,7 +1,7 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-session_start();
+
 
 $pdo = NULL;
   if($_POST!= NULL)
@@ -61,6 +61,5 @@ $pdo = NULL;
          <?php echo $var ; ?>   
         <p><input type="submit" value="OK"></p>
     </form>
-     <?php echo $logout ;?>
      <p> <a href="login.php"> Already registered? Sign in</p>
     </html>

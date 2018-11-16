@@ -3,7 +3,6 @@ include_once "connect_db.php";
 include_once "config.php";
 include_once "user_admin.php";
 include_once "product_admin.php";
-session_start();
 
 
 if($_POST!= NULL)
@@ -42,8 +41,7 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ; ?>
     <form action="signup_product.php" method="post">
         <p> Name : <input type="text" name="name" required> </p>
          <p> Price : <input type="text" name="price" required> </p>
@@ -53,4 +51,4 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         </select><p>
         <p><input type="submit" value="OK"></p>
     </form>
-</html>
+<?php include_once "footer.php" ; ?>
