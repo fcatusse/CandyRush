@@ -4,7 +4,6 @@ include_once "login_function.php";
 include_once "config.php";
 include_once "product_admin.php";
 include_once "category_admin.php";
-session_start();
 
 $cat_list = ""; 
 $prod_list = ""; 
