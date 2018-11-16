@@ -3,8 +3,10 @@ include_once "connect_db.php";
 include_once "login_function.php";
 include_once "config.php";
 
-$link = "cool";
+$link = "";
 $cat_list = NULL;
+
+$_SESSION["search"] = TRUE;
 
 if($_SESSION["name"])
 {
@@ -49,9 +51,10 @@ $query = 'SELECT * FROM categories WHERE parent_id=0';
 
 <?php include_once "header.php" ?>
 	<div class="container">
-		<h1><?php echo $hello; ?>!</h1>
+		<h3><?php echo $hello; ?>!</h3>
 		<h4><?php echo $link; ?></h4>
-		<div class="cards row"> <?php echo $cat_list; ?> </div>
 		<h5><p><a href="edit_self.php"> Edit profile </a></p></h5>
+		<h4> Product categories:</h4>
+		<div class="cards row"> <?php echo $cat_list; ?> </div>
 	</div>
 <?php include_once "footer.php" ?>
