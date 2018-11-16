@@ -51,7 +51,19 @@ class CategoryAdmin
 		$arr = $rep->fetchall(PDO::FETCH_ASSOC);
 		return $arr;
 	}
-
+	
+	public function displayChildrenCategory ($parent_id)
+	{
+		$res = array();
+        $query = "SELECT name FROM categories WHERE parent_id = ".$parent_id;
+        $result = $this->_pdo->query($query);
+		while ($d = $result->fetch(PDO::FETCH_OBJ)) {
+			//echo $d->id;
+			array_push($res, $d->name);
+		}
+		return($res);
+	}
+	
 	function getChildrenCategories($parent_id) {
 
 	$array_result = array();
