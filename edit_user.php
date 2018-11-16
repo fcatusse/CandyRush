@@ -51,15 +51,17 @@ if ($_POST!=NULL)
         $status = false;
         echo "To save changes, current password must be valid <br>";
     } else {
-        echo "good password<br>";
+        echo "nice <br>";
+        header("Location: index.php");
+        exit;
     }
 
     if($status == true)                   
     {
         if ($pass_null == true) {
-            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["user_id"]);
+            $user->updateUser($_POST["name"], $_POST["email"], "" ,$_SESSION["user_id"], $_POST["checkbox"]);
         } else {
-            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["user_id"]);
+            $user->updateUser($_POST["name"], $_POST["email"], $_POST["new_password"], $_SESSION["user_id"], $_POST["checkbox"]);
         }
         
     }
