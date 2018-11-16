@@ -10,7 +10,7 @@ if($_POST!= NULL)
 {
     $is_valid = TRUE;
 
-    if(strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 10)
+    if(strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 30)
     {
         echo "Invalid candy name"."<br>";
         $is_valid = FALSE;
