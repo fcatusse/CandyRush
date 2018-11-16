@@ -1,5 +1,4 @@
 <?php
-
 include_once "config.php";
 include_once "connect_db.php";
 include_once "search.php";
@@ -29,57 +28,83 @@ if (!empty($_POST)) {
 
 ?>
 
-	<form action="search_result.php" method="post">
-		<label for="order">Filter</label>
-		<select id="order" name="order" onchange='if(this.value != 0) { this.form.submit(); }'>
-			<option selected disabled value="">Filter by</option>
-			<option value="name ASC">A->Z</option>
-			<option value="name DESC">Z->A</option>
-			<option value="price ASC">€->€€€</option>
-			<option value="price DESC">€€€⁻>€</option>
-		</select>
-		<?php 
-			if (isset($_POST['search']))
+<div class="container">
+
+	<?php
+		$msg  = "Results";
+		$msg .= ($q_search != null) ? " for « {$q_search} » " : " for any word";
+		$msg .= ($q_category != null) ? " in category {$q_category} " : "";
+		$msg .= (($q_price[0] != -1) && ($q_price[1] != -1)) ? " with price between {$q_price[0]} € and {$q_price[1]} €" : "";
+		$msg .= ".";
+		echo "<h3>$msg</h3>";
+	?>
+
+	<div class="row">
+		<div class="col m4 offset-m8">
+			<form action="search_result.php" method="post">
+				<div class="input-field" >
+				<select id="order" name="order" onchange='if(this.value != 0) { this.form.submit(); }'>
+					<option selected disabled value="">Filter by</option>
+					<option value="name ASC">A->Z</option>
+					<option value="name DESC">Z->A</option>
+					<option value="price ASC">€->€€€</option>
+					<option value="price DESC">€€€⁻>€</option>
+				</select>
+				<label for="order">Filter</label>
+				<div>
+				<?php 
+					if (isset($_POST['search']))
+					{
+						echo '<input name="search" type="hidden" value="'.$_POST['search'].'">';
+					}
+					if (isset($_POST['category']))
+					{
+						echo '<input name="category" type="hidden" value="'.$_POST['category'].'">';
+					}
+					if (isset($_POST['price']))
+					{
+						echo '<input name="price" type="hidden" value="'.$_POST['price'].'">';
+					}
+				?>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col m12">
+		
+		<?php
+			echo "<table><tr><th>Product Name</th><th>Price</th></tr>";
+			foreach ($arr as $value)
 			{
-				echo '<input name="search" type="hidden" value="'.$_POST['search'].'">';
+				$link  = '<tr>';
+				$link .= '<td><a href=show_product.php?product_id=';
+				$link .= $value['id'];
+				$link .= '>';
+				$link .= $value['name'];
+				$link .= '</a></td>';
+				$link .= '<td>';
+				$link .= $value['price'];
+				$link .= ' €</td>';
+				$link .= '</tr>';
+				echo $link;
+
 			}
-			if (isset($_POST['category']))
-			{
-				echo '<input name="category" type="hidden" value="'.$_POST['category'].'">';
-			}
-			if (isset($_POST['price']))
-			{
-				echo '<input name="price" type="hidden" value="'.$_POST['price'].'">';
-			}
+			echo "</table>";
+		}
 		?>
-	</form>
+	</div>
+</div> 
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+</script>
 
 <?php
-
-	$msg  = "Results";
-	$msg .= ($q_search != null) ? " for « {$q_search} » " : " for any word";
-	$msg .= ($q_category != null) ? " in category {$q_category} " : "";
-	$msg .= (($q_price[0] != -1) && ($q_price[1] != -1)) ? " with price between {$q_price[0]} € and {$q_price[1]} €" : "";
-	$msg .= ".";
-
-	echo "<h3>$msg</h3>";
-
-	echo "<ul>";
-
-
-
-	foreach ($arr as $value)
-	{
-		$link  = '<a href=show_product.php?product_id=';
-		$link .= $value['id'];
-		$link .= '>';
-		$link .= $value['name'];
-		$link .= '</a><br>';
-		echo $link;
-
-	}
-	echo "</ul>";
-}
 
 include_once "footer.php";
 
