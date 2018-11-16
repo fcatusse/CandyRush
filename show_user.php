@@ -26,7 +26,26 @@ if ($_SESSION["is_admin"] == 1 ) {
 ?>
 
 <?php include_once "header.php" ; ?>
-	<?php echo $username ;?><br>
-	<?php echo $email ;?> <br>
-	<?php echo $is_admin ;?><br>
+
+<div class="container">
+
+	<h6><a href="#" onClick="window.history.back();">Back</a></h6>
+	<h4>User profile</h4>
+	<div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="headshot.jpg">
+        </div>
+        <div class="card-content">
+          <h5><?php echo $username ;?></h5>
+          <p><?php echo $email ;?></p>
+          <p><?php echo $is_admin ;?></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h6><a href="#" onClick="window.history.back();">Back</a></h6>
+</div>
+
 <?php include_once "footer.php" ; ?>
