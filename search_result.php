@@ -5,7 +5,7 @@ include_once "connect_db.php";
 include_once "search.php";
 include_once "category_admin.php";
 
-session_start();
+include_once "header.php";
 
 // Do search
 if (!empty($_POST)) {
@@ -80,5 +80,7 @@ if (!empty($_POST)) {
 	}
 	echo "</ul>";
 }
+
+include_once "footer.php";
 
 ?>

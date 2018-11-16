@@ -11,7 +11,6 @@ session_start();
 	$price = $array["price"];
 	$category_id = $array["category_id"];
 	$category = $product->getCategoryReverse($category_id);
-
 ?>
 
 <!DOCTYPE html>

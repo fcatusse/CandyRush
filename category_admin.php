@@ -63,6 +63,18 @@ class CategoryAdmin
 		}
 		return($res);
 	}
+	
+	public function displayChildrenCategory2 ($parent_id)
+	{
+		$res = array();
+        $query = "SELECT id FROM categories WHERE parent_id = ".$parent_id;
+        $result = $this->_pdo->query($query);
+		while ($d = $result->fetch(PDO::FETCH_OBJ)) {
+			//echo $d->id;
+			array_push($res, $d->id);
+		}
+		return($res);
+	}
 
 	function getChildrenCategories($parent_id) {
 

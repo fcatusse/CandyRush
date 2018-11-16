@@ -62,7 +62,7 @@ if ($_SESSION["is_admin"] == 1) {
 	$query = 'SELECT * FROM users';
 	$result = $pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
-	 	$link .= '<li> '.$d->email.' <a href="admin.php?delete='.$d->id.'&admin='.$d->admin.'"> Delete </a> <a href="admin.php?edit='.$d->id.'&admin='.$d->admin.'"> Edit </a>
+	 	$link .= '<li> '.$d->email.' <a href="admin.php?delete='.$d->id.'&admin='.$d->admin.'" onclick="return confirm(\'Are you sure you want to delete this item?\');"> Delete </a> <a href="admin.php?edit='.$d->id.'&admin='.$d->admin.'"> Edit </a>
 	 	<a href="admin.php?showuser='.$d->id.'"> Show </a></li>';
 	}
 
