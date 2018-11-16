@@ -28,7 +28,7 @@ class UserAdmin
 		$query = 'INSERT INTO users (username, email, password, admin) VALUES ( "'.$username.'", "'.$email.'", "'.password_hash($password,PASSWORD_DEFAULT).'", "'.$isAdmin.'")';
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
-		echo "User successfully added<br>";
+		return "User successfully added<br>";
 
 	}
 	public function deleteUser ($id)
@@ -36,7 +36,7 @@ class UserAdmin
 		$query = 'DELETE FROM users WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
-		echo "User successfully deleted<br>";
+		return "User successfully deleted<br>";
 	}
 
 	public function updateUser ($username, $email, $password, $id)
@@ -48,7 +48,7 @@ class UserAdmin
         }
         $rep = $this->_pdo->prepare($query);
 		$rep->execute();
-		echo "User successfully updated<br>";
+		return "User successfully updated<br>";
 	}
 
 	public function displayUser ($id, ...$arg)
