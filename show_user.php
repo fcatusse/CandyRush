@@ -1,13 +1,13 @@
 <?php
 include_once "connect_db.php";
 include_once "config.php";
-include_once "product_admin.php";
+include_once "user_admin.php";
 session_start();
 
 if ($_SESSION["is_admin"] == 1 ) {
 
-	$product = new ProductAdmin();
-	$array = $product->displayProduct($_SESSION["user_id"], "username", "email", "admin");
+	$user = new UserAdmin();
+	$array = $user->displayUser($_SESSION["user_id"], "username", "email", "admin");
 	//echo ($array["name"]);
 	$username = $array["username"];
 	$email = $array["email"];
