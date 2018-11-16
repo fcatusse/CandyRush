@@ -48,6 +48,7 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         <p> Name : <input type="text" name="name" required> </p>
          <p> Price : <input type="text" name="price" required> </p>
         <p> Candy category: <select name="candy">
+        <option selected disabled value="">Select parent category</option>
             <?php echo $option ;?>
         </select><p>
         <p><input type="submit" value="OK"></p>
