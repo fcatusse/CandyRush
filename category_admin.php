@@ -42,7 +42,7 @@ class CategoryAdmin
 		$data = $rep->fetch();
 		return $data;
 	}
-	
+
 	public function displayAllCategory()
 	{
         $query = ("SELECT * FROM categories");
@@ -51,7 +51,7 @@ class CategoryAdmin
 		$arr = $rep->fetchall(PDO::FETCH_ASSOC);
 		return $arr;
 	}
-	
+
 	public function displayChildrenCategory ($parent_id)
 	{
 		$res = array();
@@ -63,21 +63,28 @@ class CategoryAdmin
 		}
 		return($res);
 	}
-	
+
 	function getChildrenCategories($parent_id) {
 
 	$array_result = array();
 	$res = array();
 //var_dump($res);
+	$query = "SELECT * FROM categories WHERE id = ".$parent_id;
+	$result = $this->_pdo->query($query);
+	$d = $result->fetch(PDO::FETCH_OBJ);
+	if ($d ==  FALSE) {
+		return NULL;
+	}
+
 	$query = "SELECT id FROM categories WHERE parent_id = ".$parent_id;
 	$result = $this->_pdo->query($query);
 	while ($d = $result->fetch(PDO::FETCH_OBJ)) {
-		echo $d->id;
+		//echo $d->id;
 		array_push($res, $d->id);
 	}
 //var_dump ($res);
 	if (count($res) == 0) {
-		return NULL;
+		return array(strval($parent_id));
 	}
 	$array_result = array_merge($array_result, $res);
 	array_push($array_result, strval($parent_id));
@@ -103,8 +110,12 @@ class CategoryAdmin
 
 }
 
-/*$a = new CategoryAdmin();
-$a->addCategory("Tagada");
+//$a = new CategoryAdmin();
+//var_dump ($a->displayChildrenCategory(2));
+//var_dump ($a->getChildrenCategories(7));
+
+
+/*$a->addCategory("Tagada");
 $a->addCategory("Gelifies");
 $a->addCategory("Chamallows");
 $a->addCategory("Reglisse");
