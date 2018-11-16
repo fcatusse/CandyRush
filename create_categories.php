@@ -4,6 +4,8 @@ include_once "login_function.php";
 include_once "config.php";
 include_once "category_admin.php";
 
+$alert = "";
+
 if($_POST["category_name"]!= NULL)
 {
     $is_valid = TRUE;
@@ -17,10 +19,10 @@ if($_POST["category_name"]!= NULL)
         $cat = new CategoryAdmin();
         if($_POST["parent_id"] == NULL)
         {
-            $cat->addCategory($_POST["category_name"]);
+            $alert = $cat->addCategory($_POST["category_name"]);
         }
-        else{
-            $cat->addCategory($_POST["category_name"], $_POST["parent_id"]);
+        else {
+            $alert = $cat->addCategory($_POST["category_name"], $_POST["parent_id"]);
         }        
     }
 }
@@ -36,12 +38,16 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
 
 ?>
 <?php include_once "header.php" ?>
+<div class= "container">
+    <h5>Add a new category</h5>
+    <p> <?php echo $alert;?></p>
     <form action="create_categories.php" method="post">
         <p> Category name : <input type="text" name="category_name" required> </p>
         <p> Candy category: <select name="parent_id">
         <option selected disabled value="">Select parent category</option>
             <?php echo $option ;?>
         </select><p>
-        <p><input type="submit" value="OK"></p>
+        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
     </form>
+    </div>
 <?php include_once "footer.php" ?>
