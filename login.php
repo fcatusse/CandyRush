@@ -2,7 +2,6 @@
 include_once "connect_db.php";
 include_once "login_function.php";
 include_once "config.php";
-session_start();
 
 
 if ($_POST != NULL) {
