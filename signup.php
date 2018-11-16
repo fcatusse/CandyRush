@@ -1,7 +1,7 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-
+ $search = FALSE;
 
 $pdo = NULL;
   if($_POST!= NULL)
@@ -40,18 +40,21 @@ $pdo = NULL;
 
   if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 {
-    $var = '<p> Make admin <input type="checkbox" name="checkbox" > </p>';
+     $var = '<label> <input type="checkbox" /> <span>Make admin </span> </label>';
     $logout = '<p><a href="logout.php"> Logout </a></p>';
+    $signin = "";
 } else {
     $var = "";
     $logout = "";
+    $signin = '<a href="login.php"> Already registered? Sign in';
 }
 
 
 ?>
 
-<!DOCTYPE html>
-<html> 
+<?php include_once "header.php" ; ?>
+
+<div class="container">
     
     <form action="signup.php" method="post">
         <p> Name : <input type="text" name="name" required;?> </p>
@@ -59,7 +62,9 @@ $pdo = NULL;
         <p> Password : <input type="password" name="password" required /></p>
         <p> Password confirmation : <input type="password" name="password_confirmation" required /></p>
          <?php echo $var ; ?>   
-        <p><input type="submit" value="OK"></p>
+         <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
     </form>
-     <p> <a href="login.php"> Already registered? Sign in</p>
-    </html>
+     <p> <?php echo $signin ;?></p>
+</div>
+
+<?php include_once "footer.php" ; ?>
