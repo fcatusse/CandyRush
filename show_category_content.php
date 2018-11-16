@@ -6,8 +6,8 @@ include_once "product_admin.php";
 include_once "category_admin.php";
 session_start();
 
-$cat_list = "";
-$prod_list = "";
+$cat_list = ""; 
+$prod_list = ""; 
 
 //echo $_SESSION["category_id"];
 
@@ -15,7 +15,6 @@ $pdo = connect_db("localhost", CONFIG_USER, CONFIG_PASSWORD, CONFIG_PORT, "pool_
 
 $category = new CategoryAdmin();
 $array_cat = $category->displayChildrenCategory($_SESSION["category_id"]);
-//var_dump($array_cat);
 
 foreach ($array_cat as $value) {
 	$cat_list .= '<p><li> '.$value.' </li></p>';
@@ -33,6 +32,13 @@ foreach ($array_prod as $value) {
 		$var = $d->name;
 		$prod_list .= '<p><li> '.$var.' </li></p>';
 	}
+}
+
+if ($cat_list == "" ) {
+	$cat_list = "<p><li> Nothing to show </li></p>";
+}
+if ($prod_list == "") {
+	$prod_list = "<p><li> Nothing to show </li></p>";
 }
 
 
