@@ -51,9 +51,9 @@ if ($_POST!=NULL)
         $status = false;
         echo "To save changes, current password must be valid <br>";
     } else {
-        echo "nice <br>";
-        header("Location: index.php");
-        exit;
+        //echo "nice <br>";
+        //header('Refresh:3; url=index.php');
+        //echo 'User successfully edited';
     }
 
     if($status == true)                   
