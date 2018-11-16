@@ -44,8 +44,7 @@ if ($prod_list == "") {
 
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include_once "header.php" ; ?>
 	<p> Categories : </p>
 	<ul>
 		<?php echo $cat_list; ?> 
@@ -55,5 +54,5 @@ if ($prod_list == "") {
     	<?php echo $prod_list ;?>	
     </UL>
     
-</html>
+<?php include_once "footer.php" ; ?>
 
