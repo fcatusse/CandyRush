@@ -1,7 +1,7 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-session_start();
+
 
 $pdo = NULL;
   if($_POST!= NULL)
