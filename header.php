@@ -2,6 +2,7 @@
 <html>
     <head>
     <LINK href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <LINK href="css/bonus.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,3 +25,4 @@
         <!-- NAV TERMINE ICI --->
     </head>
     <body>
+    <main>
