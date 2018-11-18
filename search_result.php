@@ -3,40 +3,37 @@ include_once "config.php";
 include_once "connect_db.php";
 include_once "search.php";
 include_once "category_admin.php";
-
+include_once "product_admin.php";
 include_once "header.php";
-
 // Do search
-if (!empty($_POST)) {
+$product = new ProductAdmin();
 
+if (!empty($_POST)) {
 	$q_search = (isset($_POST['search'])) ? $_POST['search'] : null;
 	$q_category = (isset($_POST['category'])) ? $_POST['category'] : null;
+	$q_category_name = $product->getCategoryReverse($q_category);
 	$q_price = (isset($_POST['price'])) ? explode("|", $_POST['price']) : [-1,-1];
 	$q_order = (isset($_POST['order'])) ? $_POST['order'] : null;
-
 	$a = new search();
 	$arr = $a->do_search($q_search ,$q_category ,$q_price[0] ,$q_price[1], $q_order);
-
 // Display search
-
 	if (isset($_GET["showprod"])) {
 		$id = $_GET["showprod"];
 		$_SESSION["product_id"] = $id;
 		header("Location: show_product.php");
 		exit();
 	} 
-
 ?>
 
 <div class="container">
-	
+
 	<?php
 		$msg  = "Results";
 		$msg .= ($q_search != null) ? " for « {$q_search} » " : " for any word";
-		$msg .= ($q_category != null) ? " in category {$q_category} " : "";
+		$msg .= ($q_category != null) ? " in category {$q_category_name} " : "";
 		$msg .= (($q_price[0] != -1) && ($q_price[1] != -1)) ? " with price between {$q_price[0]} € and {$q_price[1]} €" : "";
 		$msg .= ".";
-		echo "<h3>$msg</h3>";
+		echo "<h4>$msg</h4>";
 	?>
 
 	<div class="row">
@@ -89,7 +86,6 @@ if (!empty($_POST)) {
 				$link .= ' €</td>';
 				$link .= '</tr>';
 				echo $link;
-
 			}
 			echo "</table>";
 		}
@@ -105,7 +101,5 @@ if (!empty($_POST)) {
 </script>
 
 <?php
-
 include_once "footer.php";
-
 ?>
