@@ -72,7 +72,6 @@ $pdo = NULL;
             <span style="float:left;"><h5>Candy Rush </h5></span>
                 <a href="#!" class="brand-logo center"><img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
-                            <li><a href="index.php">Home</a></li>
                             <li><a href="login.php">Log in</a></li>
                     </ul>
                     </div>
@@ -116,6 +115,10 @@ $pdo = NULL;
 	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
+
+  <div class ="link text">
+  <p> <a href="login.php"> Already registered? Sign in</p>
+  </div>
   </div>
     </div>
     </div>
