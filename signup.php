@@ -52,7 +52,6 @@ $pdo = NULL;
 
 ?>
 
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html> 
 <head>
@@ -64,17 +63,13 @@ $pdo = NULL;
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
 	</head>
-=======
-<?php include_once "header.php" ; ?>
-
-<div class="container">
->>>>>>> 86bd701ee923c3f9499397247ef60d41c652469e
     
 
     <header>
         <!-- NAV COMMENCE ICI --->
             <nav class="pink lighten-2">
             <div class="nav-wrapper">
+            <span style="float:left;"><h5>Candy Rush </h5></span>
                 <a href="#!" class="brand-logo center"><img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
                             <li><a href="index.php">Home</a></li>

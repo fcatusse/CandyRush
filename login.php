@@ -35,6 +35,7 @@ if ($_POST != NULL) {
         <!-- NAV COMMENCE ICI --->
             <nav class="pink lighten-2">
             <div class="nav-wrapper">
+            <span style="float:left;"><h5>Candy Rush </h5></span>
                 <a href="#!" class="brand-logo center"><img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
                             <li><a href="index.php">Home</a></li>
