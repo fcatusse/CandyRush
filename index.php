@@ -51,10 +51,10 @@ $query = 'SELECT * FROM categories WHERE parent_id=0';
 
 <?php include_once "header.php" ?>
 	<div class="container">
-		<h3><?php echo $hello; ?>!</h3>
-		<h4><?php echo $link; ?></h4>
+		<h4><?php echo $hello; ?>!</h4>
+		<h5><?php echo $link; ?></h5>
 		<h5><p><a href="edit_self.php"> Edit profile </a></p></h5>
-		<h4> Product categories:</h4>
+		<h5> Product categories:</h5>
 		<div class="cards row"> <?php echo $cat_list; ?> </div>
 	</div>
 <?php include_once "footer.php" ?>
