@@ -100,7 +100,7 @@ if ($_SESSION["is_admin"] == 1) {
 <ul>
 <li><h6><a href="signup.php"> Add user </a></h6></li>
 <li><h6><a href="signup_product.php"> Add product </a></h6></li>
-<li><h6><a href="create_categories.php"> Create Category </a></h6></li>
+<li><h6><a href="create_categories.php"> Add Category </a></h6></li>
 </ul>
 
 </div>
