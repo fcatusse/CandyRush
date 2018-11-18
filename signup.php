@@ -52,14 +52,80 @@ $pdo = NULL;
 
 <!DOCTYPE html>
 <html> 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <LINK href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <LINK href="css/bonus.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+	</head>
     
-    <form action="signup.php" method="post">
+
+    <header>
+        <!-- NAV COMMENCE ICI --->
+            <nav class="pink lighten-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center"><img src="lollipop.png">
+                    <ul id="nav-mobile" class="right">
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="login.php">Log in</a></li>
+                    </ul>
+                    </div>
+            </nav>
+        </header>
+
+  <div class="container">
+  <div class="container">
+
+  
+		<div class="container">
+    		<form method="post" class="container">
+            <div class="">
+        <div class="input-field">
+          <input id="name" type="text" class="validate" name="name" required>
+          <label for="name">Name</label>
+        </div>
+      </div>
+		<div class="">
+        <div class="input-field">
+          <input id="email" type="email" class="validate" name="email" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="">
+        <div class="input-field">
+          <input id="password" type="password" class="validate" name="password" required>
+          <label for="password">Password</label>
+        </div>
+	  </div>
+
+      <div class="">
+        <div class="input-field">
+          <input id="password" type="password" class="validate" name="password_confirmation" required>
+          <label for="password">Password confirmation</label>
+        </div>
+	  </div>
+
+      <?php echo $var ; ?>  
+	
+	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+  </div>
+    </div>
+    </div>
+ 
+  </form>
+
+    <!--<form action="signup.php" method="post">
         <p> Name : <input type="text" name="name" required;?> </p>
         <p> Email : <input type="email" name="email" required;?> </p>
         <p> Password : <input type="password" name="password" required /></p>
         <p> Password confirmation : <input type="password" name="password_confirmation" required /></p>
-         <?php echo $var ; ?>   
+        */ <?php /* echo $var ; */ ?>  */ 
         <p><input type="submit" value="OK"></p>
     </form>
-     <p> <a href="login.php"> Already registered? Sign in</p>
+     <p> <a href="login.php"> Already registered? Sign in</p>--->
     </html>

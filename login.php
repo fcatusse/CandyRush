@@ -30,6 +30,22 @@ if ($_POST != NULL) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
 	</head>
+
+  <header>
+        <!-- NAV COMMENCE ICI --->
+            <nav class="pink lighten-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center"><img src="lollipop.png">
+                    <ul id="nav-mobile" class="right">
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="signup.php">Register</a></li>
+                    </ul>
+                    </div>
+            </nav>
+        </header>
+
+  <div class="container">
+  <div class="container">
 		<div class="container">
     		<form method="post" class="container">
 		<div class="">
@@ -53,7 +69,8 @@ if ($_POST != NULL) {
 	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
-
+  </div>
+    </div>
     </div>
  
   </form>
