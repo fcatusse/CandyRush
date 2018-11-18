@@ -84,7 +84,8 @@ $user_email = $array2["email"];
         <p> New Password : <input type="password" name="new_password" /></p>
         <p> Type new password again : <input type="password" name="password_confirmation" /></p>
         <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>     
-        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
+        <button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button>
+         <button type="button" onClick="window.location.href='admin.php'" class="waves-effect waves-light btn-small"> Cancel </button>
     </form>
 </div>
 <?php include_once "footer.php" ?>
