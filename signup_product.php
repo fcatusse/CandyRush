@@ -4,6 +4,7 @@ include_once "config.php";
 include_once "user_admin.php";
 include_once "product_admin.php";
 
+$alert = "";
 
 if($_POST!= NULL)
 {
@@ -23,7 +24,7 @@ if($_POST!= NULL)
 
     if ($is_valid == TRUE) {
         $user = new ProductAdmin();
-        $user->addProduct($_POST["name"], $_POST["price"], $_POST["candy"]);
+        $alert = $user->addProduct($_POST["name"], $_POST["price"], $_POST["candy"]);
         //Header("Location: signup_product.php");
         //exit;
     }
@@ -42,6 +43,10 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
 ?>
 
 <?php include_once "header.php" ; ?>
+
+<div class="container">
+    <h5> Add a new product</h5>
+    <p> <?php echo $alert; ?> </p>
     <form action="signup_product.php" method="post">
         <p> Name : <input type="text" name="name" required> </p>
          <p> Price : <input type="text" name="price" required> </p>
@@ -49,6 +54,7 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         <option selected disabled value="">Select parent category</option>
             <?php echo $option ;?>
         </select><p>
-        <p><input type="submit" value="OK"></p>
+        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
     </form>
+    </div>
 <?php include_once "footer.php" ; ?>

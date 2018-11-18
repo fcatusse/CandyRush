@@ -56,7 +56,7 @@ class ProductAdmin
 			$query = 'INSERT INTO products (name, price, category_id) VALUES ( "'.$name.'", "'.$price.'" ,"'.$category_id.'")';
 			$req = $this->_pdo->prepare($query);
 			$req->execute();
-			echo "Product successfully added<br>";
+			return "Product successfully added<br>";
 		}
 	}
 
@@ -65,7 +65,7 @@ class ProductAdmin
 		$query = 'DELETE FROM products WHERE id='.$id;
 		$rep = $this->_pdo->prepare($query);
 		$rep->execute();
-		echo "Product successfully deleted<br>";
+		return "Product successfully deleted<br>";
 	}
 
 	public function updateProduct($name, $price, $category, $id)
@@ -74,7 +74,7 @@ class ProductAdmin
         $query = ('UPDATE products SET name = "'.$name.'", price="'.$price.'", category_id = "'.$category_id.'" WHERE id="'.$id.'"');
         $rep = $this->_pdo->prepare($query);
 		$rep->execute();
-		echo "Product successfully updated<br>";
+		return "Product successfully updated<br>";
 	}
 
 	public function displayProduct($id, ...$arg)

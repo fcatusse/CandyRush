@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +15,8 @@
         <!-- NAV COMMENCE ICI --->
             <nav class="pink lighten-2">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center"><img src="lollipop.png">
+                <span style="float:left;"><h5>Candy Rush </h5></span>
+                    <a href="#!" class="brand-logo center"> <img src="lollipop.png">
                     <ul id="nav-mobile" class="right">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="logout.php">Logout</a></li>
@@ -24,8 +26,11 @@
         </header>
         <!-- NAV TERMINE ICI --->
     </head>
-    <aside>
-        <?php /*if($_SESSION["is_admin"] !=1 || $_COOKIE["is_admin"] != 1)*/{include_once "search_form.php";} ?>
-    </aside>  
+    
+        <?php if ($_SESSION["is_admin"] !=1 && $_COOKIE["is_admin"] != 1 && $_SESSION["search"] == TRUE){ ?>
+        <aside>
+            <?php include_once "search_form.php"; ?>
+        </aside>  
+    <?php };?>
     <body>
     <main>

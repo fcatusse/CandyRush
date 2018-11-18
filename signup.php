@@ -1,7 +1,7 @@
 <?php
 include_once "user_admin.php";
 include_once "config.php";
-
+ $search = FALSE;
 
 $pdo = NULL;
   if($_POST!= NULL)
@@ -40,16 +40,19 @@ $pdo = NULL;
 
   if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 {
-    $var = '<p> Make admin <input type="checkbox" name="checkbox" > </p>';
+     $var = '<label> <input type="checkbox" /> <span>Make admin </span> </label>';
     $logout = '<p><a href="logout.php"> Logout </a></p>';
+    $signin = "";
 } else {
     $var = "";
     $logout = "";
+    $signin = '<a href="login.php"> Already registered? Sign in';
 }
 
 
 ?>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html> 
 <head>
@@ -61,6 +64,11 @@ $pdo = NULL;
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
 	</head>
+=======
+<?php include_once "header.php" ; ?>
+
+<div class="container">
+>>>>>>> 86bd701ee923c3f9499397247ef60d41c652469e
     
 
     <header>
