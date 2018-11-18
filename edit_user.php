@@ -93,9 +93,11 @@ if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
         <p> New Password : <input type="password" name="new_password" /></p>
         <p> Type new password again : <input type="password" name="password_confirmation" /></p>
         <p> To save changes, enter your current password : <input type="password" name="currentpassword" /></p>
-        <?php echo $var ; ?>  
-
-        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
+        <p><?php echo $var ; ?>  </p>
+        <p> <br></p>
+        <button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button>
+        <!--<button onClick="admin.php" class="waves-effect waves-light btn-small" > Cancel </button>-->
+        <button type="button" onClick="window.location.href='admin.php'" class="waves-effect waves-light btn-small"> Cancel </button>
     </form>
     <p></p>
 
