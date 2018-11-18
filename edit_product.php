@@ -54,9 +54,10 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         <p> Name : <input type="text" name="name" value= <?php echo $name ;?> required> </p>
          <p> Price : <input type="text" name="price" value= <?php echo $price ;?> required> </p>
         <p> Candy category (current: <?php echo $category ;?>) <select name="candy" >
-            <?php echo $option ;?>
+        <p><?php echo $option ;?></p>
         </select><p>
-        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
+        <button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button>
+        <button type="button" onClick="window.location.href='admin.php'" class="waves-effect waves-light btn-small"> Cancel </button>
     </form>
 </div>
 
