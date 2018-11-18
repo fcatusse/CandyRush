@@ -54,7 +54,8 @@ while ($d = $result->fetch(PDO::FETCH_OBJ)) {
         <option selected disabled value="">Select parent category</option>
             <?php echo $option ;?>
         </select><p>
-        <p><button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button></p>
+        <button type="submit" class="waves-effect waves-light btn-small onclick="return confirm('Send the form?')"> OK </button>
+        <button type="button" onClick="window.location.href='admin.php'" class="waves-effect waves-light btn-small"> Cancel </button>
     </form>
     </div>
 <?php include_once "footer.php" ; ?>
