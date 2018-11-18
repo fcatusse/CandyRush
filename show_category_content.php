@@ -94,7 +94,7 @@ if ($prod_list == "") {
 <?php include_once "header.php" ;?>
 <div class="container">
 	<h6><a href="#" onClick="window.history.back();">Back</a></h6>
-	<h4> <p> Category <?php echo $parent_name ;?> </p></h>
+	<h5> <p> Category <?php echo $parent_name ;?> </p></h5>
 	<h5> <p> Categories : </p></h5>
 	<div class="cards row"> <?php echo $cat_list; ?> </div>
    <h5> <p> Products: </p></h5>
