@@ -4,6 +4,8 @@ include_once "config.php";
  $search = FALSE;
 
 $pdo = NULL;
+$title = "Sign up";
+
   if($_POST!= NULL)
   {
     $is_valid = TRUE;
@@ -41,10 +43,14 @@ $pdo = NULL;
   if($_SESSION["is_admin"] == 1 || $_COOKIE["is_admin"] == 1)
 {
      $var = '<label> <input type="checkbox" /> <span>Make admin </span> </label>';
+ $var2 = '<button type="button" onClick="window.location.href=\'admin.php\'" class="waves-effect waves-light btn-small"> Cancel </button>';  
+	  
     $logout = '<p><a href="logout.php"> Logout </a></p>';
     $signin = "";
+$title = "Add a new user";
 } else {
     $var = "";
+	  $var2 = "";
     $logout = "";
     $signin = '<a href="login.php"> Already registered? Sign in';
 }
@@ -110,11 +116,12 @@ $pdo = NULL;
         </div>
 	  </div>
 
-      <?php echo $var ; ?>  
+	<p><?php echo $var ; ?></p>  
 	
-	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	<button class="btn waves-effect waves-light btn-small" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
+	<?php echo $var2 ; ?>
 
   <div class ="link text">
   <p> <a href="login.php"> Already registered? Sign in</p>
