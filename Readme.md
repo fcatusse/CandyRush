@@ -1,7 +1,9 @@
 # Réalisation d'une mini boutique en PHP
 
 __Temps alloué : 1 jour__
+
 __Framework : aucun__
+
 __Projet en équipe : 3 personnes__
 
 ## Création d'un espace d'administration
